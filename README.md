@@ -1,4 +1,4 @@
-# React + Vite + react-router-dom + ant-design
+# React + Vite + react-router-dom + ant-design + jotai  
 https://reactrouter.com/en/main/start/tutorial  
 https://ant.design/
 
