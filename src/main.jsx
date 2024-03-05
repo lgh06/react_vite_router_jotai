@@ -12,6 +12,11 @@ import {
 } from "react-router-dom";
 import "./index.css";
 
+// async function exposeComponent(path) {
+//   let { default: tempComponentName } = await import(path);
+//   return { Component: tempComponentName }
+// }
+
 const router = createHashRouter([
   {
     path: "/",
@@ -22,9 +27,10 @@ const router = createHashRouter([
         path: "contacts/:contactId",
         // element: <Contact />,
         // lazy: () => import("./routes/contact"),
+        // lazy: () => exposeComponent("./routes/contact"),
         async lazy() {
-          let { default: Contact } = await import("./routes/contact");
-          return { Component: Contact }
+          let { default: tempComponentName } = await import("./routes/contact");
+          return { Component: tempComponentName }
         },
       },
     ],
