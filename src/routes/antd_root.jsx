@@ -1,7 +1,6 @@
-import React from 'react';
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import { LaptopOutlined, UserOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 const { Header, Content, Sider } = Layout;
 
@@ -9,25 +8,41 @@ const items1 = ['1', '2', '3'].map((key) => ({
   key,
   label: `nav ${key}`,
 }));
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-  const key = String(index + 1);
-  return {
-    key: `sub${key}`,
-    icon: React.createElement(icon),
-    label: `subnav ${key}`,
-    children: new Array(4).fill(null).map((_, j) => {
-      const subKey = index * 4 + j + 1;
-      return {
-        key: subKey,
-        label: `option${subKey}`,
-      };
 
-      // return <li key={subKey}><Link to={`/contacts/2`} >Your {subKey}</Link></li>
-    }),
-  };
-});
+
+const items2 = [
+  {
+    key: 'main1',
+    label: 'subnav 1',
+    icon: <UserOutlined/>,
+    children: [
+      {
+        key: '/contacts/1',
+        label: 'subnav 1-1',
+      },
+    ]
+  },
+  {
+    key: 'main2',
+    label: 'subnav 2',
+    icon: <LaptopOutlined/>,
+    children: [
+      {
+        key: '/contacts/2',
+        label: 'subnav 2-1',
+      },
+    ]
+  },
+];
+
+
 
 const Root = () => {
+  let navigate = useNavigate();
+  let menuClick = (item) => {
+    console.log(item);
+    navigate(item.key);
+  };
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -60,13 +75,14 @@ const Root = () => {
         >
           <Menu
             mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
+            defaultSelectedKeys={['/contacts/1']}
+            defaultOpenKeys={['main1']}
             style={{
               height: '100%',
               borderRight: 0,
             }}
             items={items2}
+            onClick={menuClick}
           />
         </Sider>
         <Layout
