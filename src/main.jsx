@@ -1,7 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 
-import Root from "./routes/root";
+// import Root from "./routes/root";
+import AntdRoot from "./routes/antd_root";
 import ErrorPage from "./error-page";
 // import Contact from "./routes/contact";
 
@@ -20,7 +21,7 @@ import "./index.css";
 const router = createHashRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <AntdRoot />,
     errorElement: <ErrorPage />,
     children: [
       {
