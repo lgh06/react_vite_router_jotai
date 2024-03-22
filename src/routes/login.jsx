@@ -18,11 +18,21 @@ function Login() {
 
 
   useEffect(() => {
-    fetch("http://localhost:3000/sso/e9getQCLoginStatus").then(res =>{
-      res.json().then(data => {
-        setUrl(data.qrcode.text);
+    let iid = setInterval(()=>{
+      fetch("http://localhost:3000/sso/e9getQCLoginStatus"+ "?loginkey=" + loginkey).then(res =>{
+        res.json().then(data => {
+          console.log("qrcode scan data", data)
+          if(data.cookies && data.cookies.length > 0 && data.cookies.find(e => String(e).includes("loginidweaver"))){
+            clearInterval(iid)
+          }
+        })
       })
-    })
+    }, 3000);
+
+    return () => {
+      clearInterval(iid);
+    }
+
   }, [loginkey]);
 
   return (

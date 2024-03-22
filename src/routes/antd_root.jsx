@@ -12,6 +12,17 @@ const items1 = ['1', '2', '3'].map((key) => ({
 
 const items2 = [
   {
+    key: 'main0',
+    label: 'subnav 0',
+    icon: <UserOutlined/>,
+    children: [
+      {
+        key: '/login',
+        label: 'subnav 0-1',
+      },
+    ]
+  },
+  {
     key: 'main1',
     label: 'subnav 1',
     icon: <UserOutlined/>,
@@ -75,8 +86,8 @@ const Root = () => {
         >
           <Menu
             mode="inline"
-            defaultSelectedKeys={['/contacts/1']}
-            defaultOpenKeys={['main1']}
+            defaultSelectedKeys={['/login']}
+            defaultOpenKeys={['main0']}
             style={{
               height: '100%',
               borderRight: 0,
