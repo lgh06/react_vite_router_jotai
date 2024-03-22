@@ -13,12 +13,12 @@ const items1 = ['1', '2', '3'].map((key) => ({
 const items2 = [
   {
     key: 'main0',
-    label: 'subnav 0',
+    label: '演示demo',
     icon: <UserOutlined/>,
     children: [
       {
         key: '/login',
-        label: 'subnav 0-1',
+        label: '登录演示',
       },
     ]
   },
