@@ -58,10 +58,13 @@ function Login() {
 
   return (
     <div>
-      { url ?  <QRCodeSVG value={url} /> : null }
-      <h1>Login</h1>
-      <p>userId: {userId}</p>
-      <p>userName: {userName}</p>
+      { url && (!userId) ?  <QRCodeSVG value={url} /> : null }
+      {
+        (userId!=0) && <p>userId: {userId}</p>
+      }
+      {
+        userName && <p>userName: {userName}</p>
+      }
     </div>
   );
 }
