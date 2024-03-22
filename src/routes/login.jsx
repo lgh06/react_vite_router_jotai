@@ -49,7 +49,7 @@ function Login() {
           })
         })
       })
-    }, 3000);
+    }, 1200);
 
     return () => {
       clearInterval(iid);
