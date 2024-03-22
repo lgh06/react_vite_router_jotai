@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {QRCodeSVG} from 'qrcode.react';
+import css from "./login.module.scss";
 
 function Login() {
   const [url, setUrl] = useState("");
@@ -58,12 +59,16 @@ function Login() {
 
   return (
     <div>
-      { url && (!userId) ?  <QRCodeSVG value={url} /> : null }
+      { url && (!userId) ?  
+          <div style={{textAlign:"center"}}>
+            <QRCodeSVG className={css.qr} value={url} /> 
+          </div>
+          : null }
       {
-        (userId!=0) && <p>userId: {userId}</p>
+        (userId!=0) && <p className={css.p}>userId: {userId}</p>
       }
       {
-        userName && <p>userName: {userName}</p>
+        userName && <p className={css.p}>userName: {userName}</p>
       }
     </div>
   );
