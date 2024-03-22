@@ -34,6 +34,16 @@ const router = createHashRouter([
           return { Component: tempComponentName }
         },
       },
+      {
+        path: "login",
+        // element: <Contact />,
+        // lazy: () => import("./routes/contact"),
+        // lazy: () => exposeComponent("./routes/contact"),
+        async lazy() {
+          let { default: tempComponentName } = await import("./routes/login");
+          return { Component: tempComponentName }
+        },
+      },
     ],
   },
   // {
