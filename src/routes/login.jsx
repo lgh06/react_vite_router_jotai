@@ -73,7 +73,7 @@ function Login() {
 
 {
         (userId!=0) && <div>
-          <a href="http://localhost:3000/knex/1" target="_blank">接口示例1 Oracle CRM_CustomerInfo</a>
+          <a href="http://localhost:3000/knex/1" target="_blank">接口示例1 Oracle CRM_CustomerInfo</a> <br />
           <a href="http://localhost:3000/knex/2" target="_blank">接口示例2 SQLServer CusDeliverAdd</a>
         </div>
       }
