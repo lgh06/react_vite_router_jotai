@@ -94,7 +94,8 @@ function Login() {
           : null }
       {
         userId == 0 && <>
-          <p style={{textAlign:"center", fontSize:"1.5em"}}>请尽快扫码、尽快点击确认，否则二维码刷新后，您需要重新扫描，重新点击确认。</p>
+          <p style={{textAlign:"center", fontSize:"1.5em"}}>请尽快扫码、尽快点击确认<br/>
+          二维码刷新后，请：重新扫码，重新点击确认</p>
         
         </>
       }
