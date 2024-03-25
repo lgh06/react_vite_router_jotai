@@ -13,13 +13,15 @@ function Login() {
   const [time, setTime] = useState(28);
   const timeRef = useRef(28);
 
+  let server = "http://172.24.1.55:3000";
+
 
 
   useEffect(() => {
     let func = () =>{
       if(userId !== 0) return;
       if(userName !== "") return;
-      fetch("http://localhost:3000/sso/e9getLoginForm").then(res =>{
+      fetch(`${server}/sso/e9getLoginForm`).then(res =>{
         res.json().then(data => {
           setUrl(data.qrcode.text);
           setLoginKey(new URL(data.qrcode.text).searchParams.get('loginkey'));
@@ -40,7 +42,7 @@ function Login() {
 
   useEffect(() => {
     let iid = setInterval(()=>{
-      fetch("http://localhost:3000/sso/e9getQCLoginStatus"+ "?loginkey=" + loginKey).then(res =>{
+      fetch(`${server}/sso/e9getQCLoginStatus`+ "?loginkey=" + loginKey).then(res =>{
         res.json().then(data => {
           console.log("qrcode scan data", data)
           if(data.cookies && data.cookies.length > 0 && data.cookies.find(e => String(e).includes("loginidweaver"))){
@@ -100,7 +102,7 @@ function Login() {
         </>
       }
       {
-        <>
+        userId == 0 && <>
           <p style={{textAlign:"center", fontSize:"1.5em"}}>{time}秒后刷新</p>
         </>
       }
@@ -113,10 +115,10 @@ function Login() {
 
       {
         (userId!=0) && <div>
-          <a className={css.a} href="http://localhost:3000/knex/1" target="_blank">
+          <a className={css.a} href={`${server}/knex/1`} target="_blank">
             接口示例1&nbsp;&nbsp;Oracle&nbsp;&nbsp;CRM_CustomerInfo
           </a> <br />
-          <a className={css.a} href="http://localhost:3000/knex/2" target="_blank">
+          <a className={css.a} href={`${server}/knex/2`} target="_blank">
             接口示例2&nbsp;&nbsp;SQLServer&nbsp;&nbsp;CusDeliverAdd
           </a>
         </div>
