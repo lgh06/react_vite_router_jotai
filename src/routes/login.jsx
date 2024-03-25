@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {QRCodeSVG} from 'qrcode.react';
 import css from "./login.module.scss";
+import { useAtom } from 'jotai'
+import { userNameAtom,loginKeyAtom, userIdAtom, urlAtom } from "../store/user.js";
 
 function Login() {
-  const [url, setUrl] = useState("");
-  const [loginkey, setLoginkey] = useState("");
-  const [userId, setUserId] = useState(0);
-  const [userName, setUserName] = useState("");
+  const [url, setUrl] = useAtom(urlAtom);
+  const [loginKey, setLoginKey] = useAtom(loginKeyAtom);
+  const [userId, setUserId] = useAtom(userIdAtom);
+  const [userName, setUserName] = useAtom(userNameAtom);
 
 
   useEffect(() => {
@@ -16,7 +18,7 @@ function Login() {
       fetch("http://localhost:3000/sso/e9getLoginForm").then(res =>{
         res.json().then(data => {
           setUrl(data.qrcode.text);
-          setLoginkey(new URL(data.qrcode.text).searchParams.get('loginkey'));
+          setLoginKey(new URL(data.qrcode.text).searchParams.get('loginkey'));
         })
       })
     }
@@ -28,12 +30,13 @@ function Login() {
     return () => {
       clearInterval(iid);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId,userName]);
 
 
   useEffect(() => {
     let iid = setInterval(()=>{
-      fetch("http://localhost:3000/sso/e9getQCLoginStatus"+ "?loginkey=" + loginkey).then(res =>{
+      fetch("http://localhost:3000/sso/e9getQCLoginStatus"+ "?loginkey=" + loginKey).then(res =>{
         res.json().then(data => {
           console.log("qrcode scan data", data)
           if(data.cookies && data.cookies.length > 0 && data.cookies.find(e => String(e).includes("loginidweaver"))){
@@ -55,7 +58,8 @@ function Login() {
       clearInterval(iid);
     }
 
-  }, [loginkey]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loginKey]);
 
   return (
     <div>
