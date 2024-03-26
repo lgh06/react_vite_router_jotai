@@ -44,6 +44,9 @@ function Login() {
 
   useEffect(() => {
     let iid = setInterval(()=>{
+      if(userId) return;
+      if(loginKey === "") return;
+
       fetch(`${server}/sso/e9getQCLoginStatus`+ "?loginkey=" + loginKey).then(res =>{
         res.json().then(data => {
           console.log("qrcode scan data", data)
