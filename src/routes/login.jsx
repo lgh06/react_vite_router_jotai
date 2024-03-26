@@ -100,7 +100,7 @@ function Login() {
               size={400}
               // iconSize={size / 4}
               value={url}
-              bordered={false}
+              bordered={true}
               // icon="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
             />
           </div>
