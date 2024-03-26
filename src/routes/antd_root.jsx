@@ -82,6 +82,7 @@ const Root = () => {
           width={200}
           style={{
             background: colorBgContainer,
+            boxShadow: `3px 0px 3px lightgray`,
           }}
         >
           <Menu
@@ -98,10 +99,10 @@ const Root = () => {
         </Sider>
         <Layout
           style={{
-            padding: '0 24px 24px',
+            // padding: '0 24px 24px',
           }}
         >
-          <Breadcrumb
+          {/* <Breadcrumb
             style={{
               margin: '16px 0',
             }}
@@ -109,12 +110,13 @@ const Root = () => {
             <Breadcrumb.Item>Home</Breadcrumb.Item>
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
+          </Breadcrumb> */}
           <Content
             style={{
               padding: 24,
               margin: 0,
               minHeight: 280,
+              height: '100%',
               background: colorBgContainer,
               borderRadius: borderRadiusLG,
             }}
