@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import {QRCodeSVG} from 'qrcode.react';
+// import {QRCodeSVG} from 'qrcode.react';
+import { QRCode } from 'antd';
+
 import css from "./login.module.scss";
 import { useAtom } from 'jotai'
 import { userNameAtom,loginKeyAtom, userIdAtom, urlAtom } from "../store/user.js";
@@ -90,8 +92,17 @@ function Login() {
   return (
     <div>
       { url && (!userId) ?  
-          <div style={{textAlign:"center"}}>
-            <QRCodeSVG className={css.qr} value={url} /> 
+          <div>
+            {/* <QRCodeSVG className={css.qr} value={url} />  */}
+            <QRCode
+              errorLevel="M"
+              className={css.qr}
+              size={400}
+              // iconSize={size / 4}
+              value={url}
+              bordered={false}
+              // icon="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+            />
           </div>
           : null }
       {
