@@ -22,7 +22,7 @@ function Login() {
   useEffect(() => {
     let func = () =>{
       if(userId !== 0) return;
-      if(userName !== "") return;
+      
       fetch(`${server}/sso/e9getLoginForm`).then(res =>{
         res.json().then(data => {
           setUrl(data.qrcode.text);
@@ -39,7 +39,7 @@ function Login() {
       clearInterval(iid);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId,userName]);
+  }, [userId]);
 
 
   useEffect(() => {
