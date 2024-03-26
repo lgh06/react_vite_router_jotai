@@ -116,10 +116,13 @@ function Login() {
       {
         (userId!=0) && <div>
           <a className={css.a} href={`${server}/knex/1`} target="_blank">
-            接口示例1&nbsp;&nbsp;Oracle&nbsp;&nbsp;CRM_CustomerInfo
+            接口示例1&nbsp;&nbsp;Oracle&nbsp;&nbsp;CRM_CustomerInfo表
           </a> <br />
           <a className={css.a} href={`${server}/knex/2`} target="_blank">
-            接口示例2&nbsp;&nbsp;SQLServer&nbsp;&nbsp;CusDeliverAdd
+            接口示例2&nbsp;&nbsp;SQLServer&nbsp;&nbsp;CusDeliverAdd表
+          </a> <br />
+          <a className={css.a} href={`${server}/knex/3`} target="_blank">
+            接口示例3&nbsp;&nbsp;一个接口返回两个数据库的数据
           </a>
         </div>
       }
